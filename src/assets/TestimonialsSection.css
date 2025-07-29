@@ -1,4 +1,4 @@
-/* TestimonialsSection.css */
+
 .testimonials-section {
   background-color: #f8f8f8; /* Fond gris clair de la section */
   padding: 80px 20px;
@@ -20,7 +20,7 @@
 .section-header .underline {
   width: 150px;
   height: 4px;
-  background-color: #8bc34a; /* Ligne verte sous le titre */
+  background-color:#58BD7D; /* Ligne verte sous le titre */
   margin: 0 auto;
   border-radius: 2px;
 }
@@ -70,14 +70,14 @@
 }
 
 .testimonial-card.dark {
-  background-color: #5cb85c; /* Fond vert pour la carte du milieu */
+  background-color: #58BD7D; /* Fond vert pour la carte du milieu */
   color: #ffffff; /* Texte blanc sur fond vert */
 }
 
 .testimonial-card .quote-icon {
   font-size: 4em;
   line-height: 1;
-  color: #8bc34a; /* Vert pour l'icône de citation sur fond clair */
+  color: #58BD7D; /* Vert pour l'icône de citation sur fond clair */
   margin-bottom: 15px;
   font-weight: bold;
 }
@@ -120,7 +120,7 @@
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #8bc34a; /* Bordure verte autour de l'avatar */
+  border: 3px solid #58BD7D; /* Bordure verte autour de l'avatar */
 }
 
 .testimonial-card.dark .client-avatar {
@@ -170,9 +170,9 @@
 }
 
 .carousel-arrow:hover {
-  background-color: #8bc34a;
-  color: #ffffff;
-  border-color: #8bc34a;
+  background-color: #58BD7D;
+  color: #58BD7D;
+  border-color: #58BD7D;
 }
 
 .left-arrow {

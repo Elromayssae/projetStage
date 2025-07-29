@@ -1,230 +1,222 @@
-/* App.css */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #f8f8f8; /* Un fond légèrement gris */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Pour centrer le contenu verticalement */
-  padding: 20px; /* Un peu d'espace autour du contenu */
-  box-sizing: border-box;
-}
-
-.page-container {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  padding: 40px;
-  max-width: 1200px;
-  width: 100%;
-}
-
-.page-header {
+.expertise-wrapper {
   text-align: center;
-  margin-bottom: 50px;
+  padding: 80px 20px;
+  background-color: #f8f8f8;
+  /* overflow: hidden; /* Keep this if you encounter scroll issues, but try without first */
 }
 
-.page-header h1 {
-  font-size: 2.8em;
-  color: #333;
+.expertise-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.expertise-title span {
+  color: #2c3e50;
+}
+
+.expertise-subtitle {
+  font-size: 1.1rem;
+  color: #5cb85c;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   position: relative;
   display: inline-block;
-  margin: 0;
   padding-bottom: 10px;
 }
 
-.page-header h1::after {
+.expertise-subtitle::after {
   content: '';
   position: absolute;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 150px;
-  height: 4px;
-  background-color: #8bc34a; /* Une couleur verte pour la ligne */
+  width: 60px;
+  height: 3px;
+  background-color: #5cb85c;
   border-radius: 2px;
 }
 
-.main-content {
-  text-align: center;
-}
-
-.section-title {
-  font-size: 1.8em;
-  color: #8bc34a; /* Même vert que la ligne */
-  margin-bottom: 40px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
+/* --- REVISED GRID LAYOUT --- */
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
-  gap: 30px; /* Espace entre les éléments de la grille */
+  /* Define 4 columns for finer control:
+     Column 1: Left Card
+     Column 2 & 3: Central Image
+     Column 4: Right Card
+  */
+  grid-template-columns: 1fr 1.5fr 1.5fr 1fr; /* Adjust these ratios as needed */
+  grid-template-rows: auto auto; /* Two rows for content */
+  gap: 20px; /* Reduced gap slightly for a tighter fit */
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start; /* Align items to the start of their grid areas */
+  position: relative; /* Needed for z-index context */
+  padding: 0 10px; /* Small padding on grid sides */
+}
+
+/* Central Image Styling */
+.grid-image {
+  grid-column: 2 / span 2; /* Image spans from column 2 to 3 */
+  grid-row: 1 / span 2; /* Image spans both rows */
+  display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto;
+  z-index: 1; /* Ensure image is behind the cards that overlap it */
 }
 
+.grid-image img {
+  width: 50%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 40px; /* Adjust min-height for visual balance */
+  max-height: 500px; /* Prevent it from getting too tall */
+}
+
+/* Card Styling - General */
 .expertise-card {
-  background-color: #f4f4f4; /* Fond légèrement gris pour les cartes */
-  border-radius: 8px;
+  background-color: #ffffff;
   padding: 30px;
+  border-radius: 15px;
   text-align: left;
-  min-height: 180px; /* Hauteur minimale pour que les cartes aient une taille similaire */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Aligne le contenu en haut */
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: 2; /* Ensure cards are on top of the image */
 }
 
-.expertise-card .card-number {
-  font-size: 3em;
+.card-number {
+  font-size: 3em; /* حجم كبير للأرقام */
   font-weight: bold;
-  color: #d3d3d3; /* Couleur grise claire pour les numéros */
-  margin-bottom: 10px;
-  line-height: 1; /* Empêche l'espace excessif sous le numéro */
+  color: #58BD7D; /* لون رمادي فاتح للأرقام */
+  position: absolute;
+  top: 10px; /* وضع الرقم في أعلى الزاوية اليسرى */
+  left: 15px;
+  opacity: 1; /* شفافية بسيطة */
+  z-index: 0; /* تأكد أن الرقم وراء النص */
 }
 
 .expertise-card h3 {
-  font-size: 1.3em;
-  color: #333;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
 .expertise-card p {
-  font-size: 0.95em;
-  color: #666;
+  font-size: 1rem;
+  color: #7f8c8d;
   line-height: 1.6;
 }
 
-.expertise-image-container {
-  grid-column: 2; /* Place l'image dans la deuxième colonne */
-  grid-row: 1 / span 3; /* L'image s'étend sur 3 lignes, couvrant les blocs 1, 2, 3, 4, 5 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; /* Pour gérer le débordement de l'image */
-  border-radius: 8px; /* Appliquer le border-radius à l'image aussi */
+/* --- REVISED CARD POSITIONING --- */
+.card-1 {
+  grid-column: 1 / 2; /* Column 1 */
+  grid-row: 1 / 2; /* Row 1 */
+}
+.card-2 {
+ grid-column: 3 / 4; /* Column 3 */
+  grid-row: 1 / 2; /* Row 1 */
 }
 
-.expertise-image {
-  width: 100%;
-  height: auto;
-  display: block; /* Supprime l'espace sous l'image */
-  object-fit: cover; /* Assure que l'image couvre l'espace sans distorsion */
-  min-height: 500px; /* Ajustez cette valeur pour contrôler la hauteur de l'image */
+.card-3 {
+  grid-column: 1; /* First column */
+  grid-row: 2; /* Second row */
 }
 
-
-/* Positionnement spécifique des cartes pour correspondre à la mise en page */
-.card-01 {
-  grid-column: 1;
-  grid-row: 1;
+.card-4 {
+  grid-column: 2; /* Starts in the second column (under image) */
+  grid-row: 2; /* Second row */
+  /* This is where the overlap happens - pull it left */
+  transform: translateX(-25%); /* Adjust this value for desired overlap with Card 3 and Image */
+  margin-left: -25%; /* Use margin to create the space it needs to pull */
 }
 
-.card-02 {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.card-03 {
-  grid-column: 1;
-  grid-row: 2; /* Ou ajustez selon le besoin si l'image prend plus de place */
-}
-
-.card-04 {
-  grid-column: 3;
-  grid-row: 2; /* Ou ajustez selon le besoin */
-}
-
-.card-05 {
-  grid-column: 1; /* Il semble que le 5 soit sous le 3 dans l'image */
-  grid-row: 3; /* Ou ajustez selon le besoin */
-}
-
-/* Vous devrez ajuster les `grid-row` et `grid-column` pour les cartes 3, 4, 5
-   pour qu'elles s'alignent parfaitement avec l'image centrale qui s'étend.
-   Si l'image centrale est sur 3 lignes, les cartes autour doivent se positionner en conséquence.
-   En me basant sur l'image, j'ai l'impression que:
-   - 01 et 02 sont sur la première ligne
-   - 03 et 04 sont sur la deuxième ligne
-   - 05 est sur la troisième ligne (peut-être centré ou à gauche)
-*/
-
-/* Réajustement des positions pour mieux coller à l'image */
-.card-01 {
-  grid-column: 1;
-  grid-row: 1;
-}
-.card-02 {
-  grid-column: 3;
-  grid-row: 1;
-}
-.card-03 {
-  grid-column: 1;
-  grid-row: 2;
-}
-.card-04 {
-  grid-column: 3;
-  grid-row: 2;
-}
-.card-05 {
-  grid-column: 1; /* À gauche sous le 03 */
-  grid-row: 3;
+.card-5 {
+  grid-column: 3 / span 2; /* Starts in the third column and spans to the end of the grid (column 4) */
+  grid-row: 2; /* Second row */
 }
 
 
-/* Media Queries pour la réactivité */
+/* Responsive adjustments - VERY IMPORTANT to adjust these for the new grid */
 @media (max-width: 992px) {
   .expertise-grid {
-    grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
+    grid-template-columns: 1fr 1fr; /* Two columns on smaller screens */
+    gap: 20px;
+    padding: 0 10px;
   }
 
-  .expertise-image-container {
-    grid-column: 1; /* L'image prend toute la largeur */
-    grid-row: auto; /* Supprime l'extension sur plusieurs lignes */
-    order: -1; /* L'image apparaît en haut sur mobile */
-    margin-bottom: 30px; /* Ajoute un espace après l'image */
-  }
-
-  .expertise-image {
-    min-height: 250px; /* Réduit la hauteur de l'image sur mobile */
+  .grid-image {
+    grid-column: 1 / -1; /* Image spans full width on smaller screens */
+    grid-row: 1; /* Move image to the top row */
+    order: -1; /* Ensure image comes first visually */
+    margin-bottom: 20px;
+    min-height: 250px;
+    max-height: 350px;
+    transform: none; /* Remove transform for mobile */
   }
 
   .expertise-card {
-    grid-column: 1; /* Chaque carte prend toute la largeur */
-    grid-row: auto; /* Supprime le positionnement spécifique de grille */
+    grid-column: span 1; /* Cards span 1 column each */
+    transform: none; /* Remove transform for mobile */
+    margin-left: 0; /* Remove negative margin for mobile */
   }
+
+  /* Re-order cards for a more natural flow on smaller screens */
+  .card-1 { order: 2; grid-column: 1; }
+  .card-2 { order: 3; grid-column: 2; }
+  .card-3 { order: 4; grid-column: 1; }
+  .card-4 { order: 5; grid-column: 2; } /* Card 4 takes its own spot, no overlap on mobile */
+  .card-5 { order: 6; grid-column: 1 / span 2; /* Card 5 spans both columns on tablet */ }
 }
 
 @media (max-width: 768px) {
-  .page-container {
-    padding: 20px;
+  .expertise-title {
+    font-size: 2.2rem;
+  }
+  .expertise-subtitle {
+    font-size: 1rem;
+  }
+  .expertise-card h3 {
+    font-size: 1.3rem;
+  }
+  .expertise-card p {
+    font-size: 0.95rem;
+  }
+  .expertise-grid {
+      grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+  .card-5 { grid-column: 1; } /* On smaller mobile, card 5 is just one column */
+
+}
+
+@media (max-width: 576px) {
+  .expertise-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 15px;
   }
 
-  .page-header h1 {
-    font-size: 2em;
-  }
-
-  .section-title {
-    font-size: 1.5em;
+  .grid-image {
+    grid-column: 1; /* Spans full width */
   }
 
   .expertise-card {
     padding: 20px;
   }
-
-  .expertise-card .card-number {
-    font-size: 2.5em;
+  .card-number {
+    font-size: 2.2rem;
   }
-
   .expertise-card h3 {
-    font-size: 1.2em;
-  }
-
-  .expertise-card p {
-    font-size: 0.9em;
+    font-size: 1.2rem;
   }
 }

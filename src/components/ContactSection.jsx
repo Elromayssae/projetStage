@@ -1,17 +1,18 @@
 import '../assets/ContactSection.css';
+import svgwagaf from'../assets/svg/svgwagaf.svg';
 
 function ContactSection() {
   return (
     <section className="contact-section">
       <div className="contact-content">
         <div className="contact-text">
-          <div className="vertical-line"></div>
+          <img src={svgwagaf} alt="Direction" />
           <h2>Demandez un appel</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
             ut labore et dolore magna.
           </p>
-        </div>
+                   </div>
         <div className="contact-form">
           <h3>En quoi pouvons-nous vous aider ?</h3>
           <form>

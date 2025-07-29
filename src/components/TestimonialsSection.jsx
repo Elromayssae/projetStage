@@ -1,51 +1,52 @@
 import '../assets/TestimonialsSection.css';
 
-import svgclientImage1 from'../assets/svg/svgclientImage1.svg';
-import svgclientImage2 from'../assets/svg/svgclientImage2.svg';
-import svgclientImage3 from'../assets/svg/svgclientImage3.svg';
-
+import svgphoto1 from'../assets/svg/svgphoto1.svg';
+import svgphoto2 from'../assets/svg/svgphoto2.svg';
+import svgphoto3 from'../assets/svg/svgphoto3.svg';
+import svgnjoma from'../assets/svg/svgnjoma.svg'; 
+import svgkhatlfogani from'../assets/svg/svgkhatlfogani.svg';
+import svglkhatltahtani from'../assets/svg/svglkhatltahtani.svg';
 
 function TestimonialsSection() {
 
-  // Array des témoignages pour faciliter le mapping
   const testimonials = [
     {
       id: 1,
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis nisi sa eu. Fusce a iaculis leo. Maecenas tempor hendrerit cursus.",
       name: "Berkane Mr",
-      image: svgclientImage1,
-      rating: 5, // Nombre d'étoiles
-      theme: 'light' // Pour le fond blanc/clair
+      photo: svgphoto2, 
+      rating: 5, 
+      theme: 'light'
     },
     {
       id: 2,
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis nisi sa eu. Fusce a iaculis leo. Maecenas tempor hendrerit cursus.",
       name: "Berkane Mr",
-      image: svgclientImage2,
-      rating: 5,
-      theme: 'dark' // Pour le fond vert
+      photo: svgphoto1, 
+      rating: 5, 
+      theme: 'dark'
     },
     {
       id: 3,
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis nisi sa eu. Fusce a iaculis leo. Maecenas tempor hendrerit cursus.",
       name: "Berkane Mr",
-      image: svgclientImage3,
-      rating: 5,
-      theme: 'light' // Pour le fond blanc/clair
+      photo: svgphoto3, 
+      rating: 5, 
+      theme: 'light' 
     },
-    // Ajoutez plus de témoignages ici si nécessaire
   ];
 
-  const renderStars = (rating) => {
+    const renderStars = (rating) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
         <span
           key={i}
           className="star"
-          style={{ color: i < rating ? 'gold' : '#ccc' }} // Or en fonction du rating, gris sinon
+       
+          style={{ color: i < rating ? 'gold' : '#ccc' }}
         >
-          &#9733; {/* Unicode pour une étoile pleine */}
+          &#9733;
         </span>
       );
     }
@@ -55,23 +56,30 @@ function TestimonialsSection() {
   return (
     <section className="testimonials-section">
       <div className="section-header">
-        <h2>Découvrez l'avis de nos clients</h2>
-        <div className="underline"></div>
+     
+        <img src={svgkhatlfogani} alt="Decorative line above title" />
+        <h2>Découvrez l'avis de nos clients</h2> 
+        <img src={svglkhatltahtani} alt="Decorative line below title" />
       </div>
 
       <div className="testimonials-carousel-container">
-        <button className="carousel-arrow left-arrow">&#8249;</button> {/* Flèche gauche Unicode */}
-        
+       
+        <button className="carousel-arrow left-arrow">&#8249;</button> 
+
         <div className="testimonials-wrapper">
+         
           {testimonials.map(testimonial => (
             <div key={testimonial.id} className={`testimonial-card ${testimonial.theme}`}>
               <div className="quote-icon">❝</div>
-              <p className="testimonial-quote">{testimonial.quote}</p>
-              <div className="separator"></div>
+              <p className="testimonial-quote">{testimonial.quote}</p> 
+              <div className="separator"></div> 
               <div className="client-info">
-                
+               
+                <img src={testimonial.photo} alt={`Photo of ${testimonial.name}`} className="client-photo" />
+
                 <div className="client-details">
-                  <span className="client-name">{testimonial.name}</span>
+                  <span className="client-name">{testimonial.name}</span> 
+                 
                   {renderStars(testimonial.rating)}
                 </div>
               </div>
@@ -79,10 +87,11 @@ function TestimonialsSection() {
           ))}
         </div>
 
-        <button className="carousel-arrow right-arrow">&#8250;</button> {/* Flèche droite Unicode */}
+     
+        <button className="carousel-arrow right-arrow">&#8250;</button> 
       </div>
     </section>
   );
-    }
+}
 
 export default TestimonialsSection;
